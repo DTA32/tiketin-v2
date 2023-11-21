@@ -1,0 +1,47 @@
+{
+    "rows": [
+        {
+            "row_number": "1",
+            "seats": [
+                {
+                    "seat_number": "1A",
+                    "available": true
+                },
+                {
+                    "seat_number": "1B",
+                    "available": true
+                },
+                {
+                    "seat_number": "1C",
+                    "available": true
+                },
+                {
+                    "seat_number": "1D",
+                    "available": true
+                }
+            ]
+        },
+        {
+            "row_number": "2",
+            "seats": [
+                {
+                    "seat_number": "2A",
+                    "available": true
+                },
+                {
+                    "seat_number": "2B",
+                    "available": true
+                },
+                {
+                    "seat_number": "2C",
+                    "available": true
+                },
+                {
+                    "seat_number": "2D",
+                    "available": true
+                }
+            ]
+        }
+    ],
+    "max_columns_on_aisle": 2
+}

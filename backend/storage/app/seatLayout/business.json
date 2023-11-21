@@ -1,0 +1,68 @@
+{
+    "rows": [
+        {
+            "row_number": "3",
+            "seats": [
+                {
+                    "seat_number": "3A",
+                    "available": true
+                },
+                {
+                    "seat_number": "3B",
+                    "available": true
+                },
+                {
+                    "seat_number": "3C",
+                    "available": true
+                },
+                {
+                    "seat_number": "3D",
+                    "available": true
+                }
+            ]
+        },
+        {
+            "row_number": "4",
+            "seats": [
+                {
+                    "seat_number": "4A",
+                    "available": true
+                },
+                {
+                    "seat_number": "4B",
+                    "available": true
+                },
+                {
+                    "seat_number": "4C",
+                    "available": true
+                },
+                {
+                    "seat_number": "4D",
+                    "available": true
+                }
+            ]
+        },
+        {
+            "row_number": "5",
+            "seats": [
+                {
+                    "seat_number": "5A",
+                    "available": true
+                },
+                {
+                    "seat_number": "5B",
+                    "available": true
+                },
+                {
+                    "seat_number": "5C",
+                    "available": true
+                },
+                {
+                    "seat_number": "5D",
+                    "available": true
+                }
+            ]
+        }
+    ],
+    "max_columns_on_aisle": 2
+}
