@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BandaraController;
+use App\Http\Controllers\PenerbanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,5 @@ use App\Http\Controllers\NewsController;
 // });
 
 Route::get('/news/highlight', [NewsController::class, 'index']);
+Route::get('/bandara/getKota', [BandaraController::class, 'getKota']);
+Route::post('/penerbangan/search', [PenerbanganController::class, 'search']);
