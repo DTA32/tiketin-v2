@@ -11,6 +11,7 @@ export default function ProgressBar({step}) {
                     aria-valuenow={progress[step-1]}
                     aria-valuemin={0}
                     aria-valuemax={100}
+                    style={{height: "0.5rem"}}
                 >
                     <div
                     className="progress-bar bg-secondary"

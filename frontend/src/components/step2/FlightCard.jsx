@@ -35,9 +35,11 @@ export default function FlightCard({kelas_id}) {
         )
     }
     if(flightClass == {} || error || kelas_id == 0){
-        <div className="border border-secondary-subtle my-1 pt-2 pb-3 px-3 bg-white" style={{height: "150px"}}>
+        return(
+            <div className="border border-secondary-subtle my-1 pt-2 pb-3 px-3 bg-white" style={{height: "150px"}}>
                 <p className="text-center fs-5 text-danger">Error!</p>
             </div>
+        )
     }
     return(
         <div className="border border-secondary-subtle my-1 pt-2 pb-3 px-3 bg-white">
