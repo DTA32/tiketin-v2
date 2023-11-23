@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Header() {
-    return(
+    return (
         <div className="header-container header-only">
             <Link to="/">
-                <img src="/images/logo.png" alt="logo" className="logo"/>
+                <img src="/images/logo.png" alt="logo" className="logo" />
             </Link>
         </div>
-    )
+    );
 }

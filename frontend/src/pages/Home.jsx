@@ -15,8 +15,8 @@ export default function Home() {
           <p className="fs-6 lh-sm mb-0">Halo, Guest!</p>
           <p className="fs-5 fw-bold lh-sm mb-0">Mau kemana?</p>
         </div>
-        <SearchBox/>
-        <NewsSlider/>
+        <SearchBox />
+        <NewsSlider />
       </div>
       <Footer />
     </div>
