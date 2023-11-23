@@ -30,7 +30,7 @@ class PenerbanganController extends Controller
             'bandara_asal',
             'bandara_tujuan',
             'kelas_penerbangan' => function ($query) use ($kelas, $penumpang) {
-                $query->select('penerbangan_id', 'tipe_kelas', 'harga', 'jumlah_kursi');
+                $query->select('id', 'penerbangan_id', 'tipe_kelas', 'harga', 'jumlah_kursi');
                 $query->where('tipe_kelas', '=', $kelas);
                 $query->where('jumlah_kursi', '>=', $penumpang);
             }

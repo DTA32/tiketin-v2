@@ -51,7 +51,7 @@ export default function SearchBox() {
           } else if(res.data.status === "400"){
               setError("Harap isi semua kolom");
           } else {
-              navigate("/step1", {state: {data: res.data.data, penumpang: data.penumpang, kelas: data.kelas}});
+              navigate("/search", {state: {data: res.data.data, penumpang: data.penumpang, kelas: data.kelas}});
           }
           setLoading(false);
         } catch (error){

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\BandaraController;
 use App\Http\Controllers\PenerbanganController;
+use App\Http\Controllers\KelasPenerbanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ use App\Http\Controllers\PenerbanganController;
 Route::get('/news/highlight', [NewsController::class, 'index']);
 Route::get('/bandara/getKota', [BandaraController::class, 'getKota']);
 Route::post('/penerbangan/search', [PenerbanganController::class, 'search']);
+Route::get('/kelasPenerbangan/getDetail/{id}', [KelasPenerbanganController::class, 'getDetail']);

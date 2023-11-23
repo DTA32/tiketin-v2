@@ -2,47 +2,27 @@ import Header from "../components/step1/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faSort, faArrowRightLong, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import rupiah from '../utils/converter';
 import { format, parseISO, intervalToDuration } from "date-fns";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Step1() {
     const [results, setResults] = useState([]);
     const location = useLocation();
     console.log(location.state);
     useEffect(() => {
-        const data = location.state.data;
+        const data = location.state == null ? [] : location.state.data;
         setResults(data);
-    }, [location.state]);      
+    }, [location.state]);
+    const penumpang = location.state == null ? 1 : location.state.penumpang;
+    const kelas = location.state == null ? 1 : location.state.kelas;      
     return (
         <>
-        <Header data={results[0]} penumpang={location.state.penumpang} kelas={location.state.kelas}/>
+        <Header data={results[0]} penumpang={penumpang} kelas={kelas}/>
         <div>
-            <div>
-            <div
-                className="progress mt-1"
-                role="progressbar"
-                aria-label="Progress"
-                aria-valuenow={0}
-                aria-valuemin={0}
-                aria-valuemax={100}
-            >
-                <div
-                className="progress-bar bg-secondary"
-                style={{ width: "17%" }}
-                />
-            </div>
-            <div className="d-flex justify-content-between">
-                <span style={{ fontSize: 10 }}> </span>
-                <span style={{ fontSize: 10 }}>1</span>
-                <span style={{ fontSize: 10 }}>2</span>
-                <span style={{ fontSize: 10 }}>3</span>
-                <span style={{ fontSize: 10 }}>4</span>
-                <span style={{ fontSize: 10 }}>5</span>
-                <span style={{ fontSize: 10 }}> </span>
-            </div>
-            </div>
+            <ProgressBar step={1}/>
             <div className="container row mt-1 py-1 mx-0 border border-secondary-subtle bg-white">
             <div
                 className="col border-end border-secondary-subtle d-flex justify-content-center align-items-center"
@@ -77,8 +57,8 @@ export default function Step1() {
                     <Link
                         className="text-black text-decoration-none"
                         id=""
-                        to="/step2" 
-                        state={{kelas_id: result.kelas_penerbangan[0].id, penumpang: location.state.penumpang}}
+                        to="/order/form" 
+                        state={{kelas_id: result.kelas_penerbangan[0].id, penumpang: penumpang}}
                         key={result.id}
                     >
                         <div className="border border-secondary-subtle my-1 pt-2 pb-3 px-3 bg-white">

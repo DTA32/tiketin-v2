@@ -30,7 +30,7 @@ export default function Header({data, penumpang, kelas}) {
         <div className="header-container container text-center">
             <div className="row justify-content-center align-items-center w-100 h-100 mx-0">
             <div className="col-3">
-                <Link to=".." className="text-black">
+                <Link to={'..'} className="text-black">
                     <FontAwesomeIcon icon={faArrowLeft} size="2xl" />
                 </Link>
             </div>
