@@ -58,7 +58,7 @@ export default function SeatSelector({ kelas_id, penumpang }) {
                 : e.target.innerText[1].charCodeAt(0) - "A".charCodeAt(0);
         if (seatLayout.rows[row].seats[column].available) {
             let temp = passenger;
-            temp[selectedPassenger].kursi = e.target.innerText;
+            temp[selectedPassenger].kursi_penerbangan = e.target.innerText;
             setPassenger(temp);
             setSelectedSeat(e.target.innerText);
         }
@@ -66,40 +66,40 @@ export default function SeatSelector({ kelas_id, penumpang }) {
     const handlePassengerChange = (e) => {
         if (selectedSeat != "") {
             const row =
-                (passenger[selectedPassenger].kursi.length > 2
-                    ? passenger[selectedPassenger].kursi[0] + passenger[selectedPassenger].kursi[1]
-                    : passenger[selectedPassenger].kursi[0]) - parseInt(seatLayout.rows[0].row_number);
+                (passenger[selectedPassenger].kursi_penerbangan.length > 2
+                    ? passenger[selectedPassenger].kursi_penerbangan[0] + passenger[selectedPassenger].kursi_penerbangan[1]
+                    : passenger[selectedPassenger].kursi_penerbangan[0]) - parseInt(seatLayout.rows[0].row_number);
             const column =
-                passenger[selectedPassenger].kursi.length > 2
-                    ? passenger[selectedPassenger].kursi[2].charCodeAt(0) - "A".charCodeAt(0)
-                    : passenger[selectedPassenger].kursi[1].charCodeAt(0) - "A".charCodeAt(0);
+                passenger[selectedPassenger].kursi_penerbangan.length > 2
+                    ? passenger[selectedPassenger].kursi_penerbangan[2].charCodeAt(0) - "A".charCodeAt(0)
+                    : passenger[selectedPassenger].kursi_penerbangan[1].charCodeAt(0) - "A".charCodeAt(0);
             let temp = seatLayout;
             temp.rows[row].seats[column].available = false;
             setSeatLayout(temp);
         }
         setSelectedPassenger(e.target.value);
-        if (passenger[e.target.value].kursi != undefined) {
+        if (passenger[e.target.value].kursi_penerbangan != undefined) {
             const row =
-                (passenger[e.target.value].kursi.length > 2
-                    ? passenger[e.target.value].kursi[0] + passenger[e.target.value].kursi[1]
-                    : passenger[e.target.value].kursi[0]) - parseInt(seatLayout.rows[0].row_number);
+                (passenger[e.target.value].kursi_penerbangan.length > 2
+                    ? passenger[e.target.value].kursi_penerbangan[0] + passenger[e.target.value].kursi_penerbangan[1]
+                    : passenger[e.target.value].kursi_penerbangan[0]) - parseInt(seatLayout.rows[0].row_number);
             const column =
-                passenger[e.target.value].kursi.length > 2
-                    ? passenger[e.target.value].kursi[2].charCodeAt(0) - "A".charCodeAt(0)
-                    : passenger[e.target.value].kursi[1].charCodeAt(0) - "A".charCodeAt(0);
+                passenger[e.target.value].kursi_penerbangan.length > 2
+                    ? passenger[e.target.value].kursi_penerbangan[2].charCodeAt(0) - "A".charCodeAt(0)
+                    : passenger[e.target.value].kursi_penerbangan[1].charCodeAt(0) - "A".charCodeAt(0);
 
             let temp = seatLayout;
             temp.rows[row].seats[column].available = true;
             setSeatLayout(temp);
-            setSelectedSeat(passenger[e.target.value].kursi);
+            setSelectedSeat(passenger[e.target.value].kursi_penerbangan);
         } else {
             setSelectedSeat("");
         }
     };
     const handleSubmit = () => {
         for (const penumpang of passenger) {
-            if (penumpang.kursi === undefined) {
-                setValidation("Ada penumpang yang belum memilih kursi");
+            if (penumpang.kursi_penerbangan === undefined) {
+                setValidation("Ada penumpang yang belum memilih kursi_penerbangan");
                 return;
             }
         }
@@ -122,7 +122,7 @@ export default function SeatSelector({ kelas_id, penumpang }) {
                 >
                     {penumpang.map((penumpang, key) => (
                         <option value={key} key={key}>
-                            Penumpang {key + 1} - {penumpang.nama_lengkap} - Kursi {penumpang.kursi}
+                            Penumpang {key + 1} - {penumpang.nama} - Kursi {penumpang.kursi_penerbangan}
                         </option>
                     ))}
                 </select>

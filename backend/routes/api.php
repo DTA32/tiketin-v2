@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\BandaraController;
 use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\KelasPenerbanganController;
+use App\Http\Controllers\PemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::get('/news/highlight', [NewsController::class, 'index']);
 Route::get('/bandara/getKota', [BandaraController::class, 'getKota']);
 Route::post('/penerbangan/search', [PenerbanganController::class, 'search']);
 Route::get('/kelasPenerbangan/getDetail/{id}', [KelasPenerbanganController::class, 'getDetail']);
+Route::post('/pemesanan/create', [PemesananController::class, 'create']);
+Route::get('/pemesanan/getDetail/{id}', [PemesananController::class, 'getDetail']);
+Route::put('/pemesanan/pay/{id}', [PemesananController::class, 'pay']);

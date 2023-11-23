@@ -13,7 +13,7 @@ class pemesanan extends Model
     use HasFactory;
     protected $table = 'pemesanan';
     protected $primaryKey = 'id';
-    protected $fillable = ['penerbangan_id', 'status', 'metode_pembayaran', 'referensi_pembayaran', 'kelas_penerbangan_id', 'userId'];
+    protected $fillable = ['penerbangan_id', 'status', 'metode_pembayaran', 'referensi_pembayaran', 'kelas_penerbangan_id', 'userId', 'booking_code'];
     public function penerbangan(): BelongsTo
     {
         return $this->belongsTo(penerbangan::class);
