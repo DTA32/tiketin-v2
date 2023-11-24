@@ -25,7 +25,6 @@ export default function Header({ data, penumpang, kelas }) {
             waktu: data.waktu_berangkat,
         };
     }
-    console.log(dataRes);
     return (
         <div className="header-container container text-center">
             <div className="row justify-content-center align-items-center w-100 h-100 mx-0">

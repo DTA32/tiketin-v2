@@ -14,7 +14,7 @@ export default function Step4() {
     const [submitting, setSubmitting] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location.state);
+
     let props = location.state == null ? null : location.state.data;
     if (props === null) {
         props = {
@@ -44,7 +44,6 @@ export default function Step4() {
         };
         fetchData();
     }, [props.kelas_id]);
-    console.log(data);
     if (error) {
         return (
             <div className="text-danger mt-1 fs-4 text-center">

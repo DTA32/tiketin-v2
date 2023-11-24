@@ -107,7 +107,7 @@ class PemesananController extends Controller
             'pemesanan_harga',
             'pemesanan_penumpang',
             'kelas_penerbangan' => function ($query) {
-                $query->select('id', 'tipe_kelas');
+                $query->select('id', 'penerbangan_id', 'tipe_kelas', 'harga', 'jumlah_kursi');
             }
         ])
         ->where('id', $id)

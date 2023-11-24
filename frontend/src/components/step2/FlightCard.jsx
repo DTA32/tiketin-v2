@@ -26,7 +26,6 @@ export default function FlightCard({ kelas_id }) {
         };
         fetchFlightClass();
     }, [kelas_id]);
-    console.log(flightClass);
     if (loading) {
         return (
             <div className="border border-secondary-subtle my-1 pt-2 pb-3 px-3 bg-white" style={{ height: "150px" }}>

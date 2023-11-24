@@ -15,7 +15,7 @@ export default function VirtualAccount() {
             referensi_pembayaran: "VA-" + va.toString().slice(-4),
         };
         try {
-            const res = await axios.put("http://127.0.0.1:8000/api/pemesanan/pay/"+id, data);
+            const res = await axios.put("http://127.0.0.1:8000/api/pemesanan/pay/" + id, data);
             if (res.data.status === "404") {
                 alert("Pemesanan tidak ditemukan!");
             } else if (res.data.status === "400") {
@@ -30,7 +30,7 @@ export default function VirtualAccount() {
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {
             setCompleted(true);
-            return <span>00:00</span>;
+            return <span>0 menit 0 detik</span>;
         } else {
             return (
                 <span>

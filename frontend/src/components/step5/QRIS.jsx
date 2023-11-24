@@ -30,7 +30,7 @@ export default function QRIS() {
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {
             setCompleted(true);
-            return <span>00:00</span>;
+            return <span>0 menit 0 detik</span>;
         } else {
             return (
                 <span>

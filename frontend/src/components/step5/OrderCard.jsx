@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import rupiah from "../../utils/converter";
 import { format, parseISO } from "date-fns";
+import PropTypes from "prop-types";
 
 export default function OrderCard({ id }) {
     const [data, setData] = useState({});
@@ -69,3 +70,7 @@ export default function OrderCard({ id }) {
         </div>
     );
 }
+
+OrderCard.propTypes = {
+    id: PropTypes.number,
+};
