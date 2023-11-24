@@ -16,6 +16,14 @@ import QRIS from "./components/step5/QRIS";
 import Order from "./pages/Order";
 import History from "./pages/History";
 import HistoryDetail from "./pages/HistoryDetail";
+import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
+import Settings from "./pages/Settings";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import Auth from "./pages/Auth";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
@@ -42,6 +50,19 @@ const router = createBrowserRouter([
     },
     { path: "/history", element: <History /> },
     { path: "/history/:id", element: <HistoryDetail /> },
+    { path: "/news", element: <News /> },
+    { path: "/news/:id", element: <NewsDetail /> },
+    { path: "/settings", element: <Settings /> },
+    { path: "/about", element: <About /> },
+    { path: "/profile", element: <Profile /> },
+    {
+        path: "/auth",
+        element: <Auth />,
+        children: [
+            { path: "login", element: <Login /> },
+            { path: "register", element: <Register /> },
+        ],
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

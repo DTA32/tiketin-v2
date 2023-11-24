@@ -24,6 +24,8 @@ use App\Http\Controllers\PemesananController;
 // });
 
 Route::get('/news/highlight', [NewsController::class, 'index']);
+Route::get('/news/getAll', [NewsController::class, 'getAll']);
+Route::get('/news/get/{id}', [NewsController::class, 'getDetail']);
 Route::get('/bandara/getKota', [BandaraController::class, 'getKota']);
 Route::post('/penerbangan/search', [PenerbanganController::class, 'search']);
 Route::get('/kelasPenerbangan/getDetail/{id}', [KelasPenerbanganController::class, 'getDetail']);

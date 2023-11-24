@@ -99,7 +99,7 @@ export default function HistoryDetail() {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <Link to={`/history/${id}/eticket`} className="text-decoration-none text-black">
                         <div
                             className="border border-secondary-subtle mt-3 py-2 px-3 bg-white"
                             style={{ border: "1px solid #868686" }}
@@ -107,7 +107,7 @@ export default function HistoryDetail() {
                             <FontAwesomeIcon icon={faTicket} />
                             <span className="ps-2">Lihat E-ticket</span>
                         </div>
-                    </div>
+                    </Link>
                 </>
             )}
             {data.metode_pembayaran == 0 && (
@@ -126,9 +126,13 @@ export default function HistoryDetail() {
             )}
             <div className="text-center pb-4" style={{ marginTop: 120 }}>
                 <p className="fs-5 mb-0">Butuh bantuan?</p>
-                <div className="d-inline-block button text-center text-decoration-none pt-1" style={{ width: 240 }}>
+                <Link
+                    to="/support"
+                    className="d-inline-block button text-center text-decoration-none pt-1"
+                    style={{ width: 240 }}
+                >
                     Hubungi Kami
-                </div>
+                </Link>
             </div>
         </div>
     );
