@@ -1,5 +1,3 @@
-import HeaderBack from "../components/HeaderBack";
-import ProgressBar from "../components/ProgressBar";
 import FlightCard from "../components/step2/FlightCard";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -12,7 +10,7 @@ export default function Step2() {
     if (props === null) {
         props = {
             kelas_id: 0,
-            penumpang: 1,
+            penumpang: 0,
         };
     } else {
         props = {
@@ -43,8 +41,6 @@ export default function Step2() {
     };
     return (
         <div>
-            <HeaderBack />
-            <ProgressBar step={2} />
             <FlightCard kelas_id={props.kelas_id} />
             <div>
                 <p className="fs-5 mt-3 ps-3">Detail Penumpang</p>

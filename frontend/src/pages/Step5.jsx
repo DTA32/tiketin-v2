@@ -6,11 +6,9 @@ import { Outlet } from "react-router-dom";
 
 export default function Step5() {
     const { id } = useParams();
-    // TODO: order validation (not found or already paid)
+    // TODO: order validation (not found or already paid
     return (
         <div>
-            <Header />
-            <ProgressBar step={5} />
             <OrderCard id={id} />
             <Outlet />
         </div>

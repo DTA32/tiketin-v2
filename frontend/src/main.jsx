@@ -13,25 +13,31 @@ import ChoosePayment from "./components/step5/ChoosePayment";
 import CreditCard from "./components/step5/CreditCard";
 import VirtualAccount from "./components/step5/VirtualAccount";
 import QRIS from "./components/step5/QRIS";
+import Order from "./pages/Order";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
     { path: "/", element: <Home /> },
     { path: "/search", element: <Step1 /> },
-    { path: "/order/form", element: <Step2 /> },
-    { path: "/order/seat", element: <Step3 /> },
-    { path: "/order/review", element: <Step4 /> },
     {
-        path: "/order/pay/:id",
-        element: <Step5 />,
+        path: "/order",
+        element: <Order />,
         children: [
-            { path: "", element: <ChoosePayment /> },
-            { path: "1", element: <CreditCard /> },
-            { path: "2", element: <VirtualAccount /> },
-            { path: "3", element: <QRIS /> },
+            { path: "form", element: <Step2 /> },
+            { path: "seat", element: <Step3 /> },
+            { path: "review", element: <Step4 /> },
+            {
+                path: "pay/:id",
+                element: <Step5 />,
+                children: [
+                    { path: "", element: <ChoosePayment /> },
+                    { path: "1", element: <CreditCard /> },
+                    { path: "2", element: <VirtualAccount /> },
+                    { path: "3", element: <QRIS /> },
+                ],
+            },
         ],
     },
-    // { path: '/order/pay/:id/:payment', element: <Step5Pay/> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

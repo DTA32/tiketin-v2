@@ -33,14 +33,14 @@ export default function SeatSelector({ kelas_id, penumpang }) {
         fetchFlightClass();
     }, [kelas_id]);
 
-    if (loading || seatLayout.rows === undefined) {
+    if (loading) {
         return (
             <div className="fs-5 text-center mt-2">
                 <p className="mb-0">Loading...</p>
             </div>
         );
     }
-    if (error) {
+    if (error || seatLayout.rows === undefined) {
         return (
             <div className="fs-5 text-center text-danger mt-2">
                 <p className="mb-0">Error fetching data!</p>
@@ -67,7 +67,8 @@ export default function SeatSelector({ kelas_id, penumpang }) {
         if (selectedSeat != "") {
             const row =
                 (passenger[selectedPassenger].kursi_penerbangan.length > 2
-                    ? passenger[selectedPassenger].kursi_penerbangan[0] + passenger[selectedPassenger].kursi_penerbangan[1]
+                    ? passenger[selectedPassenger].kursi_penerbangan[0] +
+                      passenger[selectedPassenger].kursi_penerbangan[1]
                     : passenger[selectedPassenger].kursi_penerbangan[0]) - parseInt(seatLayout.rows[0].row_number);
             const column =
                 passenger[selectedPassenger].kursi_penerbangan.length > 2

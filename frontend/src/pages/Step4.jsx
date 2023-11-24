@@ -1,6 +1,4 @@
 import FlightDetail from "../components/FlightDetail";
-import HeaderBack from "../components/HeaderBack";
-import ProgressBar from "../components/ProgressBar";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -49,23 +47,15 @@ export default function Step4() {
     console.log(data);
     if (error) {
         return (
-            <div>
-                <HeaderBack />
-                <ProgressBar step={4} />
-                <div className="text-danger mt-1">
-                    <p>Error! {error}</p>
-                </div>
+            <div className="text-danger mt-1 fs-4 text-center">
+                <p>Error! {error}</p>
             </div>
         );
     }
     if (loading) {
         return (
-            <div>
-                <HeaderBack />
-                <ProgressBar step={4} />
-                <div className="fs-4 text-center mt-1">
-                    <p>Loading...</p>
-                </div>
+            <div className="fs-4 text-center mt-1">
+                <p>Loading...</p>
             </div>
         );
     }
@@ -90,8 +80,6 @@ export default function Step4() {
     };
     return (
         <div className="pb-5">
-            <HeaderBack />
-            <ProgressBar step={4} />
             <div className="fs-5 text-center mt-1">
                 <p>Ringkasan Pemesanan</p>
             </div>

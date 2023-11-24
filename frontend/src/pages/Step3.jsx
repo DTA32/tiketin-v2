@@ -1,5 +1,3 @@
-import HeaderBack from "../components/HeaderBack";
-import ProgressBar from "../components/ProgressBar";
 import { useLocation } from "react-router-dom";
 import SeatSelector from "../components/step3/SeatSelector";
 import PropTypes from "prop-types";
@@ -9,8 +7,6 @@ export default function Step3() {
     const props = location.state != undefined ? location.state : { kelas_id: 0, penumpang: {} };
     return (
         <div>
-            <HeaderBack />
-            <ProgressBar step={3} />
             <SeatSelector kelas_id={props.kelas_id} penumpang={props.penumpang} />
         </div>
     );

@@ -58,35 +58,37 @@ class PemesananController extends Controller
         foreach($passengers as $penumpang){
             $arr = str_split($penumpang['kursi_penerbangan']);
             $row = 0;
-            $key = 0;
             $col = 0;
-            if(sizeof($arr) == 3){
-                $row = $arr[0].$arr[1];
-                $key = 2;
-            }
-            else{
-                $row = $arr[0];
-                $key = 1;
-            }
-            if($arr[$key] == 'A'){
-                $col = 0;
-            }
-            else if ($arr[$key] == 'B'){
-                $col = 1;
-            }
-            else if ($arr[$key] == 'C'){
-                $col = 2;
-            }
-            else if ($arr[$key] == 'D'){
-                $col = 3;
-            }
-            else if ($arr[$key] == 'E'){
-                $col = 4;
-            }
-            else if ($arr[$key] == 'F'){
-                $col = 5;
-            }
-            $seatLayout['rows'][intval($row)-1]['seats'][$col]['available'] = false;
+            // $key = 0;
+            // if(sizeof($arr) == 3){
+            //     $row = $arr[0].$arr[1];
+            //     $key = 2;
+            // }
+            // else{
+            //     $row = $arr[0];
+            //     $key = 1;
+            // }
+            // if($arr[$key] == 'A'){
+            //     $col = 0;
+            // }
+            // else if ($arr[$key] == 'B'){
+            //     $col = 1;
+            // }
+            // else if ($arr[$key] == 'C'){
+            //     $col = 2;
+            // }
+            // else if ($arr[$key] == 'D'){
+            //     $col = 3;
+            // }
+            // else if ($arr[$key] == 'E'){
+            //     $col = 4;
+            // }
+            // else if ($arr[$key] == 'F'){
+            //     $col = 5;
+            // }
+            $row = (sizeof($arr) > 2 ? $arr[0].$arr[1] : $arr[0]) - $seatLayout['rows'][0]['row_number'];
+            $col = mb_ord($arr[sizeof($arr)-1]) - mb_ord('A');
+            $seatLayout['rows'][$row]['seats'][$col]['available'] = false;
         }
 
         $kelas_penerbangan->seat_layout = json_encode($seatLayout, JSON_PRETTY_PRINT);
