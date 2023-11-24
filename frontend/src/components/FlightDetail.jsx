@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format, parseISO, intervalToDuration } from "date-fns";
 import PropTypes from "prop-types";
 
-export default function FlightDetail({ data }) {
+export default function FlightDetail({ data, source }) {
+    const tipe_kelas = source === 0 ? data.tipe_kelas : data.kelas_penerbangan.tipe_kelas; // 0 is step 4 (kelas), 1 is history detail (pemesanan)
     return (
         <div>
             <p className="fs-5 mt-3 ps-3 mb-2">Penerbangan</p>
@@ -14,7 +15,7 @@ export default function FlightDetail({ data }) {
                 </div>
                 <div className="d-flex justify-content-between">
                     <p style={{ fontSize: 12 }}>ID: {data.penerbangan.id}</p>
-                    <p>{data.tipe_kelas == 1 ? "Ekonomi" : data.tipe_kelas == 2 ? "Bisnis" : "First"}</p>
+                    <p>{tipe_kelas == 1 ? "Ekonomi" : tipe_kelas == 2 ? "Bisnis" : "First"}</p>
                 </div>
                 <div className="d-flex justify-content-center">
                     <p className="mb-0">{format(parseISO(data.penerbangan.waktu_berangkat), "EEEE, d LLLL Y")}</p>
@@ -75,4 +76,5 @@ export default function FlightDetail({ data }) {
 
 FlightDetail.propTypes = {
     data: PropTypes.object,
+    source: PropTypes.number,
 };

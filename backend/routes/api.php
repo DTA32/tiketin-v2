@@ -30,3 +30,4 @@ Route::get('/kelasPenerbangan/getDetail/{id}', [KelasPenerbanganController::clas
 Route::post('/pemesanan/create', [PemesananController::class, 'create']);
 Route::get('/pemesanan/getDetail/{id}', [PemesananController::class, 'getDetail']);
 Route::put('/pemesanan/pay/{id}', [PemesananController::class, 'pay']);
+Route::get('/pemesanan/getAll', [PemesananController::class, 'getAll']);

@@ -14,6 +14,8 @@ import CreditCard from "./components/step5/CreditCard";
 import VirtualAccount from "./components/step5/VirtualAccount";
 import QRIS from "./components/step5/QRIS";
 import Order from "./pages/Order";
+import History from "./pages/History";
+import HistoryDetail from "./pages/HistoryDetail";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
             },
         ],
     },
+    { path: "/history", element: <History /> },
+    { path: "/history/:id", element: <HistoryDetail /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

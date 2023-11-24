@@ -27,7 +27,25 @@ export default function PriceDetail({ source, data, quantity }) {
     }
     // source = 1 -> history detail (data from server)
     else if (source === 1) {
-        return <></>;
+        return (
+            <div>
+                <p className="fs-5 mt-3 ps-3 mb-2">Detail Harga</p>
+                <div className="border border-secondary-subtle my-0 py-2 px-3 bg-white d-flex justify-content-between align-items-center ">
+                    <p className="my-1">
+                        {data.penerbangan.maskapai} ({data.pemesanan_harga.kuantitas}x)
+                    </p>
+                    <p className="my-1">{rupiah(data.kelas_penerbangan.harga)}</p>
+                </div>
+                <div className="border border-secondary-subtle my-0 py-2 px-3 bg-white d-flex justify-content-between align-items-center ">
+                    <p className="my-1">Biaya Layanan</p>
+                    <p className="my-1">{rupiah(data.pemesanan_harga.biaya_layanan)}</p>
+                </div>
+                <div className="border border-secondary-subtle my-0 py-2 px-3 bg-white d-flex justify-content-between align-items-center ">
+                    <p className="my-1">Total</p>
+                    <p className="my-1">{rupiah(data.pemesanan_harga.total)}</p>
+                </div>
+            </div>
+        );
     }
 }
 

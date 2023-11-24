@@ -82,7 +82,7 @@ export default function Step4() {
             <div className="fs-5 text-center mt-1">
                 <p>Ringkasan Pemesanan</p>
             </div>
-            <FlightDetail data={data} />
+            <FlightDetail data={data} source={0} />
             <PassengerList passengers={props.penumpang} />
             <PriceDetail source={0} data={data} quantity={props.penumpang.length} />
             <div className="text-center mt-5 pb-3">
