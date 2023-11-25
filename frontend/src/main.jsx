@@ -25,6 +25,14 @@ import Auth from "./pages/Auth";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import ETicket from "./pages/ETicket";
+import Admin from "./pages/Admin";
+import Dashboard from "./components/admin/Dashboard";
+import Bandara from "./components/admin/Bandara";
+import Penerbangan from "./components/admin/Penerbangan";
+import Pemesanan from "./components/admin/Pemesanan";
+import Users from "./components/admin/Users";
+import NewsAdmin from "./components/admin/NewsAdmin";
+import KelasPenerbangan from "./components/admin/KelasPenerbangan";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
@@ -63,6 +71,19 @@ const router = createBrowserRouter([
         children: [
             { path: "login", element: <Login /> },
             { path: "register", element: <Register /> },
+        ],
+    },
+    {
+        path: "/admin",
+        element: <Admin />,
+        children: [
+            { path: "", element: <Dashboard /> },
+            { path: "bandara", element: <Bandara /> },
+            { path: "penerbangan", element: <Penerbangan /> },
+            { path: "penerbangan/kelas/:id", element: <KelasPenerbangan /> },
+            { path: "pemesanan", element: <Pemesanan /> },
+            { path: "news", element: <NewsAdmin /> },
+            { path: "user", element: <Users /> },
         ],
     },
 ]);

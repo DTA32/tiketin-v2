@@ -25,4 +25,8 @@ class KelasPenerbanganController extends Controller
             'data' => $result
         ]);
     }
+    public function getByPen($id){
+        $results = kelas_penerbangan::where('penerbangan_id', '=', $id)->get();
+        return response()->json($results);
+    }
 }

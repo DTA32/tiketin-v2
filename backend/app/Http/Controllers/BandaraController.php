@@ -11,4 +11,8 @@ class BandaraController extends Controller
         $town = Bandara::select('kota')->distinct()->get();
         return response()->json($town);
     }
+    public function getAll(){
+        $bandara = Bandara::all();
+        return response()->json($bandara);
+    }
 }

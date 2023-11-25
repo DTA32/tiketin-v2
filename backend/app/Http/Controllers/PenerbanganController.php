@@ -54,4 +54,11 @@ class PenerbanganController extends Controller
             'data' => $results
         ]);
     }
+    public function getAll(){
+        $results = Penerbangan::with([
+            'bandara_asal',
+            'bandara_tujuan',
+        ])->get();
+        return response()->json($results);
+    }
 }
