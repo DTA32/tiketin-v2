@@ -22,7 +22,7 @@ export default function News() {
         <div>
             <HeaderBack />
             <div
-                className="border border-secondary-subtle py-4 px-4 my-1 bg-white scrollbar"
+                className="container border border-secondary-subtle py-4 px-4 my-1 bg-white scrollbar"
                 style={{ overflow: "auto", maxHeight: "80vh" }}
             >
                 <div className="mb-2 d-inline-flex align-items-center">

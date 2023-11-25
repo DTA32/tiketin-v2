@@ -55,7 +55,7 @@ export default function HistoryDetail() {
     }
     console.log(data);
     return (
-        <div className="pb-3">
+        <div className="pb-3 container">
             <HeaderBack />
             <div>
                 <div className="fs-5 text-center mt-1">

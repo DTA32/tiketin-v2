@@ -24,6 +24,7 @@ import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import ETicket from "./pages/ETicket";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
     },
     { path: "/history", element: <History /> },
     { path: "/history/:id", element: <HistoryDetail /> },
+    { path: "/history/:id/eticket", element: <ETicket /> },
     { path: "/news", element: <News /> },
     { path: "/news/:id", element: <NewsDetail /> },
     { path: "/settings", element: <Settings /> },

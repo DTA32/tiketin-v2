@@ -6,26 +6,18 @@ import PropTypes from "prop-types";
 export default function HistoryCard({ p }) {
     return (
         <Link className="text-black text-decoration-none" to={`/history/${p.id}`}>
-            <div className="border border-secondary-subtle my-1 py-2 px-3 bg-white container">
-                <div className="row">
-                    <div className="col">
+            <div className="border border-secondary-subtle my-1 py-2 px-3 bg-white container row">
+                <div className="col">
+                    <div className="row">
                         <p className="text-center">Booking ID: {p.id}</p>
                     </div>
-                    <div className="col">
-                        <p className="text-end">{rupiah(p.pemesanan_harga.total)}</p>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
+                    <div className="row">
                         <p className="text-center fs-5" style={{ whiteSpace: "nowrap" }}>
                             {p.penerbangan.bandara_asal.kota} - {p.penerbangan.bandara_tujuan.kota}
                         </p>
                     </div>
-                    <div className="col" />
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <p className="mb-0" style={{ fontSize: 14 }}>
+                    <div className="row">
+                        <p className="mb-0 text-center text-nowrap" style={{ fontSize: 14 }}>
                             {format(parseISO(p.penerbangan.waktu_berangkat), "E, d MMM")} |{" "}
                             {p.pemesanan_harga.kuantitas} pax |{" "}
                             {p.kelas_penerbangan.tipe_kelas == 1
@@ -35,12 +27,27 @@ export default function HistoryCard({ p }) {
                                 : "First"}
                         </p>
                     </div>
-                    <div className="col-4">
+                </div>
+                <div className="col">
+                    <div className="row h-50">
+                        <p className="text-center">{rupiah(p.pemesanan_harga.total)}</p>
+                    </div>
+                    <div className="row h-50 d-flex align-items-center justify-content-center">
                         {p.status == 1 && (
-                            <p className="text-center mb-0 px-3 bg-success text-light rounded-pill">Berhasil</p>
+                            <p
+                                className="text-center mb-0 px-3 bg-success text-light rounded-pill"
+                                style={{ maxWidth: 480 }}
+                            >
+                                Berhasil
+                            </p>
                         )}
                         {p.status == 0 && (
-                            <p className="text-center mb-0 px-4 bg-danger text-light rounded-pill">Gagal</p>
+                            <p
+                                className="text-center mb-0 px-4 bg-danger text-light rounded-pill"
+                                style={{ maxWidth: 480 }}
+                            >
+                                Gagal
+                            </p>
                         )}
                     </div>
                 </div>

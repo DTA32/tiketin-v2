@@ -4,7 +4,7 @@ export default function Profile() {
     return (
         <div>
             <HeaderBack />
-            <div className="search-box mt-1 py-3">
+            <div className="search-box mt-1 py-3 container">
                 <p className="text-center fw-bold fs-5">Profile</p>
                 <div>
                     <div className="container">
@@ -55,7 +55,7 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-            <div className="search-box mt-3 py-3">
+            <div className="search-box mt-3 py-3 container">
                 <p className="text-center fw-bold fs-5">Change Password</p>
                 <div>
                     <div className="container">

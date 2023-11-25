@@ -4,7 +4,7 @@ export default function About() {
     return (
         <>
             <HeaderBack />
-            <div className="bg-white text-center" style={{ height: "100vh" }}>
+            <div className="bg-white text-center container" style={{ height: "100vh" }}>
                 <div className="pt-5">
                     <img src="/images/logo.png" alt="" style={{ height: 128 }} />
                 </div>

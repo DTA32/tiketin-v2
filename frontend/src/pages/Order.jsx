@@ -17,7 +17,7 @@ export default function Order() {
                 : 1
             : 1;
     return (
-        <div>
+        <div className="container">
             <HeaderBack />
             <ProgressBar step={progressStep} />
             {match === null && <p className="fs-4 text-center text-danger">Error!</p>}

@@ -46,7 +46,7 @@ export default function NewsDetail() {
     }
     if (news !== undefined) {
         return (
-            <>
+            <div className="container">
                 <HeaderBack />
                 <div className="scrollbar" style={{ overflow: "auto", maxHeight: "95vh" }}>
                     <div className="mt-1">
@@ -74,7 +74,7 @@ export default function NewsDetail() {
                         <div>{news.content}</div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

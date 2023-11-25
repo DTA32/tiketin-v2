@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 export default function Login() {
     return (
         <div
-            className="d-flex flex-column justify-content-center align-items-center min-vh-100"
+            className="d-flex flex-column justify-content-center align-items-center min-vh-100 container"
             style={{
                 backgroundImage: "url(/images/login_bg.png)",
                 backgroundRepeat: "no-repeat",
