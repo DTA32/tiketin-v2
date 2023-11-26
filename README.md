@@ -14,3 +14,12 @@ Disclaimer:
 ## Installation Guide
 
 Tersedia di folder backend dan frontend
+
+### Fitur yang belum berfungsi
+
+- Authentication (fitur yang terdampak ada dibawah)
+  - Login
+  - Register
+  - Profile
+- Filter (on step 1 order)
+- Admin (Create, Update, and Delete function)
