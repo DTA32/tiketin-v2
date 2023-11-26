@@ -33,6 +33,9 @@ import Pemesanan from "./components/admin/Pemesanan";
 import Users from "./components/admin/Users";
 import NewsAdmin from "./components/admin/NewsAdmin";
 import KelasPenerbangan from "./components/admin/KelasPenerbangan";
+import Support from "./pages/Support";
+import Form from "./components/support/Form";
+import Success from "./components/support/Success";
 
 const router = createBrowserRouter([
     { path: "*", element: <NotFound /> },
@@ -84,6 +87,14 @@ const router = createBrowserRouter([
             { path: "pemesanan", element: <Pemesanan /> },
             { path: "news", element: <NewsAdmin /> },
             { path: "user", element: <Users /> },
+        ],
+    },
+    {
+        path: "/support",
+        element: <Support />,
+        children: [
+            { path: "", element: <Form /> },
+            { path: "success", element: <Success /> },
         ],
     },
 ]);

@@ -17,11 +17,13 @@ export default function Order() {
                 : 1
             : 1;
     return (
-        <div className="container">
+        <div className="">
             <HeaderBack />
-            <ProgressBar step={progressStep} />
-            {match === null && <p className="fs-4 text-center text-danger">Error!</p>}
-            <Outlet />
+            <div className="container">
+                <ProgressBar step={progressStep} />
+                {match === null && <p className="fs-4 text-center text-danger">Error!</p>}
+                <Outlet />
+            </div>
         </div>
     );
 }

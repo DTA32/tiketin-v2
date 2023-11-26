@@ -46,9 +46,9 @@ export default function NewsDetail() {
     }
     if (news !== undefined) {
         return (
-            <div className="container">
+            <div className="">
                 <HeaderBack />
-                <div className="scrollbar" style={{ overflow: "auto", maxHeight: "95vh" }}>
+                <div className="scrollbar container" style={{ overflow: "auto", maxHeight: "95vh" }}>
                     <div className="mt-1">
                         <img
                             src={`http://127.0.0.1:8000/images/news/${news.id}.jpg`}

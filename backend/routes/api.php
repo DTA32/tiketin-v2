@@ -8,6 +8,7 @@ use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\KelasPenerbanganController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SupportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::post('/pemesanan/create', [PemesananController::class, 'create']);
 Route::get('/pemesanan/getDetail/{id}', [PemesananController::class, 'getDetail']);
 Route::put('/pemesanan/pay/{id}', [PemesananController::class, 'pay']);
 Route::get('/pemesanan/getAll', [PemesananController::class, 'getAll']);
+Route::post('/support/create', [SupportController::class, 'post']);
 
 
 Route::prefix('admin')->group(function () {

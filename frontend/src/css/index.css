@@ -80,6 +80,7 @@ label {
     transform: translate(-50%, 0);
     bottom: 0;
     height: 80px;
+    width: 100%;
     /* max-width: 480px; */
     background: #ffffff;
     border-bottom: 1px solid #c1c1c1;

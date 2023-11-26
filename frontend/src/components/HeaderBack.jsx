@@ -5,7 +5,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 export default function HeaderBack() {
     const navigate = useNavigate();
     return (
-        <div className="header-container container text-center">
+        <div className="header-container text-center">
             <div className="row justify-content-center align-items-center w-100 h-100 mx-0">
                 <div className="col-3">
                     <Link

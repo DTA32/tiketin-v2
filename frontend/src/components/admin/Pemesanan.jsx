@@ -60,7 +60,7 @@ export default function Pemesanan() {
                                             ? "First"
                                             : "Error/Unlisted"}
                                     </td>
-                                    <td>{order.user_id}</td>
+                                    <td>{order.userId}</td>
                                     <td>
                                         <Link
                                             to={`detail/${order.id}`}
