@@ -53,7 +53,6 @@ export default function HistoryDetail() {
             </>
         );
     }
-    console.log(data);
     return (
         <div className="pb-3">
             <HeaderBack />
