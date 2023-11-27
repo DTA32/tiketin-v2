@@ -47,7 +47,7 @@ export default function Form() {
             <div className="row">
                 <div className="col-12">
                     <form onSubmit={handleSubmit}>
-                        <div className="form-group">
+                        <div className={`form-group ${id == 0 && "d-none"}`}>
                             <label htmlFor="id">ID Pemesanan</label>
                             <input
                                 type="text"

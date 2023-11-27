@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\bandara;
+use App\Models\Bandara;
 
 class BandaraSeeder extends Seeder
 {
@@ -41,7 +41,7 @@ class BandaraSeeder extends Seeder
             ]
         ];
         foreach ($data as $d) {
-            bandara::create($d);
+            Bandara::create($d);
         }
     }
 }

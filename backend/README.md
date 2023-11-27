@@ -14,6 +14,8 @@ To run backend server, execute
 
 `php artisan serve`
 
+Server will be available at [localhost:8000](localhost:8000)
+
 ---
 
 ## Default data

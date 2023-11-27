@@ -9,13 +9,25 @@ Disclaimer:
 - Data yang digunakan web ini hanya dummy
 - Segala order yang dilakukan dalam web ini tidak dapat digunakan di dunia nyata
 
----
-
 ## Installation Guide
 
 Tersedia di folder backend dan frontend
 
-### Fitur yang belum berfungsi
+## Fitur
+
+- Reservasi tiket pesawat
+  - Mencari dan memilih penerbangan yang diinginkan
+  - Memasukkan data penumpang
+  - Memilih kursi penerbangan
+  - Konfirmasi pemesanan dan melakukan pembayaran
+- Riwayat pemesanan
+- Export E-Ticket dari pemesanan
+- Customer Service
+- Berita pariwisata
+- Pengaturan profil
+- Admin Dashboard (Read)
+
+**belum berfungsi**
 
 - Authentication (fitur yang terdampak ada dibawah)
   - Login
