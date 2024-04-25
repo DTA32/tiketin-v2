@@ -6,11 +6,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function News() {
     const [news, setNews] = useState([]);
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/news/getAll")
+            .get(apiUrl + "/news/getAll")
             .then((res) => {
                 setNews(res.data);
             })

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function CreditCard() {
     const [cardNumber, setCardNumber] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
@@ -18,7 +20,7 @@ export default function CreditCard() {
                 referensi_pembayaran: "CARD-" + cardNumber.slice(-4),
             };
             try {
-                const res = await axios.put("http://127.0.0.1:8000/api/pemesanan/pay/" + id, data);
+                const res = await axios.put(apiUrl + "/pemesanan/pay/" + id, data);
                 if (res.data.status === "404") {
                     alert("Pemesanan tidak ditemukan!");
                 } else if (res.data.status === "400") {

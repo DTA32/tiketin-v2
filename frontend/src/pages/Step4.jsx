@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import PriceDetail from "../components/PriceDetail";
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Step4() {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
@@ -30,7 +32,7 @@ export default function Step4() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/kelasPenerbangan/getDetail/" + props.kelas_id);
+                const res = await axios.get(apiUrl + "/kelasPenerbangan/getDetail/" + props.kelas_id);
                 if (res.data.status === "404") {
                     setError("404 Not Found");
                 } else {
@@ -65,7 +67,7 @@ export default function Step4() {
         };
         try {
             setSubmitting(true);
-            const res = await axios.post("http://127.0.0.1:8000/api/pemesanan/create", data);
+            const res = await axios.post(apiUrl + "/pemesanan/create", data);
             if (res.data.status === "400") {
                 setError("Gagal membuat order, harap coba lagi");
             } else {

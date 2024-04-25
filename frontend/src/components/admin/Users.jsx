@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/admin/user/getAll")
+            .get(apiUrl + "/admin/user/getAll")
             .then((response) => {
                 setUsers(response.data);
             })
@@ -19,11 +21,11 @@ export default function Users() {
     const handleDelete = (id) => (e) => {
         e.preventDefault();
         axios
-            .delete(`http://localhost:8000/api/admin/user/delete/${id}`)
+            .delete(`${apiUrl}/admin/user/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 axios
-                    .get("http://localhost:8000/api/admin/user/getAll")
+                    .get(apiUrl + "/admin/user/getAll")
                     .then((response) => {
                         setUsers(response.data);
                     })

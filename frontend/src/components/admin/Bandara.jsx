@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Bandara() {
     const [bandara, setBandara] = useState([]);
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/admin/bandara/getAll")
+            .get(apiUrl + "/admin/bandara/getAll")
             .then((response) => {
                 setBandara(response.data);
             })
@@ -17,11 +19,11 @@ export default function Bandara() {
     const handleDelete = (id) => (e) => {
         e.preventDefault();
         axios
-            .delete(`http://localhost:8000/api/admin/bandara/delete/${id}`)
+            .delete(`${apiUrl}/admin/bandara/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 axios
-                    .get("http://localhost:8000/api/admin/bandara/getAll")
+                    .get(apiUrl + "/admin/bandara/getAll")
                     .then((response) => {
                         setBandara(response.data);
                     })
@@ -73,7 +75,7 @@ export default function Bandara() {
                                             type="submit"
                                             className="btn bg-danger-subtle text-decoration-none py-0"
                                             onClick={handleDelete(airport.id)}
-                                     a   >
+                                        >
                                             Delete
                                         </button>
                                     </td>

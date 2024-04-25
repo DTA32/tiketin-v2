@@ -5,6 +5,8 @@ import axios from "axios";
 import { format, parseISO, intervalToDuration } from "date-fns";
 import PropTypes from "prop-types";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function FlightCard({ kelas_id }) {
     const [flightClass, setFlightClass] = useState({});
     const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ export default function FlightCard({ kelas_id }) {
     useEffect(() => {
         const fetchFlightClass = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/kelasPenerbangan/getDetail/" + kelas_id);
+                const res = await axios.get(apiUrl + "/kelasPenerbangan/getDetail/" + kelas_id);
                 if (res.data.status === "404") {
                     setError(true);
                 } else {

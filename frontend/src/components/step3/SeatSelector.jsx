@@ -4,6 +4,8 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function SeatSelector({ kelas_id, penumpang }) {
     const [passenger, setPassenger] = useState(penumpang);
     const [flightClass, setFlightClass] = useState({});
@@ -18,7 +20,7 @@ export default function SeatSelector({ kelas_id, penumpang }) {
     useEffect(() => {
         const fetchFlightClass = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/kelasPenerbangan/getDetail/" + kelas_id);
+                const res = await axios.get(apiUrl + "/kelasPenerbangan/getDetail/" + kelas_id);
                 if (res.data.status === "404") {
                     setError(true);
                 } else {

@@ -4,6 +4,8 @@ import HeaderBack from "../components/HeaderBack";
 import { useParams } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function NewsDetail() {
     const [news, setNews] = useState();
     const [error, setError] = useState(false);
@@ -12,7 +14,7 @@ export default function NewsDetail() {
     useEffect(() => {
         const fetchData = async () => {
             axios
-                .get("http://127.0.0.1:8000/api/news/get/" + id)
+                .get(apiUrl + "/news/get/" + id)
                 .then((res) => {
                     if (res.data.status === "404") {
                         setError(true);
@@ -51,7 +53,7 @@ export default function NewsDetail() {
                 <div className="scrollbar container" style={{ overflow: "auto", maxHeight: "95vh" }}>
                     <div className="mt-1">
                         <img
-                            src={`http://127.0.0.1:8000/images/news/${news.id}.jpg`}
+                            src={`${apiUrl}/images/news/${news.id}.jpg`}
                             alt=""
                             style={{
                                 width: "100%",

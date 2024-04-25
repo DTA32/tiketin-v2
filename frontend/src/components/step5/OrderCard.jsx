@@ -4,6 +4,8 @@ import rupiah from "../../utils/converter";
 import { format, parseISO } from "date-fns";
 import PropTypes from "prop-types";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function OrderCard({ id }) {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
@@ -11,7 +13,7 @@ export default function OrderCard({ id }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/pemesanan/getDetail/" + id);
+                const res = await axios.get(apiUrl + "/pemesanan/getDetail/" + id);
                 if (res.data.status === "404") {
                     setError("404 Not Found");
                 } else {

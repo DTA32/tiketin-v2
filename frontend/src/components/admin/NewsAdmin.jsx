@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function NewsAdmin() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/admin/news/getAll")
+            .get(apiUrl + "/admin/news/getAll")
             .then((response) => {
                 setNews(response.data);
             })
@@ -19,11 +21,11 @@ export default function NewsAdmin() {
     const handleDelete = (id) => (e) => {
         e.preventDefault();
         axios
-            .delete(`http://localhost:8000/api/admin/news/delete/${id}`)
+            .delete(`${apiUrl}/admin/news/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 axios
-                    .get("http://localhost:8000/api/admin/news/getAll")
+                    .get(apiUrl + "/admin/news/getAll")
                     .then((response) => {
                         setNews(response.data);
                     })
@@ -66,10 +68,7 @@ export default function NewsAdmin() {
                                     <td> {newsItem.author} </td>
                                     <td> {newsItem.content} </td>
                                     <td>
-                                        <img
-                                            src={`http://127.0.0.1:8000/images/news/${newsItem.id}.jpg`}
-                                            style={{ width: 80 }}
-                                        />
+                                        <img src={`${apiUrl}/images/news/${newsItem.id}.jpg`} style={{ width: 80 }} />
                                     </td>
                                     <td> {newsItem.created_at} </td>
                                     <td>
