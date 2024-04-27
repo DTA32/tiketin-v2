@@ -8,6 +8,7 @@ Disclaimer:
 
 - Data yang digunakan web ini hanya dummy
 - Segala order yang dilakukan dalam web ini tidak dapat digunakan di dunia nyata
+- Khusus di staging server, dikarenakan efisiensi server, penerbangan yang tersedia hanya di esok hari dan semua data akan di-reset setiap harinya
 
 ## Installation Guide
 

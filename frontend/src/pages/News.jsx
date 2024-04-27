@@ -35,11 +35,7 @@ export default function News() {
                     {news.map((news, i) => (
                         <Link key={i} className="text-decoration-none" to={`/news/${news.id}`}>
                             <div className="card" style={{ width: 160 }}>
-                                <img
-                                    src={`http://127.0.0.1:8000/images/news/${news.id}.jpg `}
-                                    className="card-img-top"
-                                    alt=""
-                                />
+                                <img src={`${apiUrl}/images/news/${news.id}.jpg `} className="card-img-top" alt="" />
                                 <div className="card-body p-2">
                                     <p className="card-title fw-bold" style={{ fontSize: 12 }}>
                                         {news.title}
