@@ -18,11 +18,11 @@ class penerbangan extends Model
     ];
     public function bandara_asal(): BelongsTo
     {
-        return $this->belongsTo(bandara::class, 'bandara_asal_id');
+        return $this->belongsTo(Bandara::class, 'bandara_asal_id');
     }
     public function bandara_tujuan(): BelongsTo
     {
-        return $this->belongsTo(bandara::class, 'bandara_tujuan_id');
+        return $this->belongsTo(Bandara::class, 'bandara_tujuan_id');
     }
     public function kelas_penerbangan(): HasMany
     {
