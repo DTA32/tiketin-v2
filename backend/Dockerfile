@@ -1,35 +1,55 @@
-# Use the official PHP image
-FROM php:8.1-apache
+# Use the official PHP 8.1.2 FPM base image
+FROM php:8.1.2-fpm
+
+# Set the working directory to /var/www/html
+WORKDIR /var/www/backend
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    zip \
-    unzip \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
     libzip-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    build-essential \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    curl \
+    libcurl4-openssl-dev \
+    pkg-config \
+    libssl-dev \
+    software-properties-common \
+    npm
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo_mysql zip
+RUN docker-php-ext-configure gd
+RUN docker-php-ext-install pdo_pgsql zip mbstring exif pcntl bcmath -j$(nproc) gd intl
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-WORKDIR /var/www/html
 
-COPY . .
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
 
-COPY apache.conf /etc/apache2/sites-enabled/000-default.conf
+COPY --chown=www:www  . .
+USER www
+RUN composer install
+RUN php artisan storage:link
 
-RUN a2enmod rewrite
+# Build the frontend assets
+RUN npm install
+RUN npm run build
 
-RUN chown -R www-data:www-data /var/www/html
-
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-EXPOSE 80
+# Start PHP-FPM
+EXPOSE 9000
+CMD ["php-fpm"]

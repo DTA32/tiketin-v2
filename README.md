@@ -9,10 +9,15 @@ Disclaimer:
 - Data yang digunakan web ini hanya dummy
 - Segala order yang dilakukan dalam web ini tidak dapat digunakan di dunia nyata
 - Khusus di staging server, dikarenakan efisiensi server, penerbangan yang tersedia hanya di esok hari dan semua data akan di-reset setiap harinya
+- Website ini didesain untuk mobile, oleh karena itu disarankan untuk membuka web ini di handphone atau menggunakan DevTools->Mobile View
 
 ## Installation Guide
 
 Tersedia di folder backend dan frontend
+
+### Docker Setup
+
+Container in root folder is to serve NGINX as webserver alongside with React, not separating React to different container as it's only generated static page (no server components).
 
 ## Fitur
 
