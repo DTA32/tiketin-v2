@@ -12,7 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        if (App::environment('staging')) {
+            $schedule->command('migrate:fresh --seed --force')->dailyAt('17:00');
+            $schedule->command('optimize:clear')->dailyAt('17:00');
+            $schedule->command('optimize')->dailyAt('17:00');
+        }
     }
 
     /**

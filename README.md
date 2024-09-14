@@ -17,7 +17,7 @@ Tersedia di folder backend dan frontend
 
 ### Docker Setup
 
-Container in root folder is to serve NGINX as webserver alongside with React, not separating React to different container as it's only generated static page (no server components).
+~~Container in root folder is to serve NGINX as webserver alongside with React, not separating React to different container as it's only generated static page (no server components).~~ Susah settingnya, mending dipisahin aja meskipun jadi pake 2 NGINX
 
 ## Fitur
 

@@ -1,8 +1,9 @@
+# Taken from Vern
 # Use the official PHP 8.1.2 FPM base image
 FROM php:8.1.2-fpm
 
 # Set the working directory
-WORKDIR /var/www/backend
+WORKDIR /var/www/html
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -41,7 +42,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Ensure that the working directory and vendor can be written by the www user
-RUN chown -R www:www /var/www/backend
+RUN chown -R www:www /var/www/html
 
 # Switch to the non-root user
 USER www
@@ -57,3 +58,6 @@ COPY --chown=www:www . .
 # Start PHP-FPM
 EXPOSE 9000
 CMD ["php-fpm"]
+
+COPY cron/jobs /etc/crontabs/root
+CMD ["crond", "-f"]

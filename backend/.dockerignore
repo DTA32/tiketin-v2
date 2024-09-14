@@ -1,2 +1,9 @@
+/.git
 /node_modules
-/vendor
+vendor/
+bootstrap/cache
+!bootstrap/cache/.gitignore
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*

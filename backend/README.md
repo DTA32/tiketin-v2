@@ -16,6 +16,11 @@ To run backend server, execute
 
 Server will be available at [localhost:8000](localhost:8000)
 
+### Docker setup
+
+1. `docker compose build`
+1. `docker compose up -d`
+
 ---
 
 ## Default data
