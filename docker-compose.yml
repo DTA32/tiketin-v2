@@ -5,9 +5,9 @@ services:
             dockerfile: Dockerfile
         container_name: tiketin-be
         restart: unless-stopped
-        working_dir: /var/www/html
+        working_dir: /var/www/backend
         volumes:
-            - ./:/var/www/html
+            - ./backend:/var/www/backend
         networks:
             - tiketin-net
 
@@ -33,6 +33,8 @@ services:
         restart: unless-stopped
         ports:
             - "7003:80"
+        volumes:
+            - ./backend:/var/www/backend
         networks:
             - tiketin-net
 
