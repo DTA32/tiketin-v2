@@ -36,12 +36,18 @@ RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath -j$(nproc) g
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Create a user and group
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
-COPY --chown=www:www . .
+# Ensure that the working directory and vendor can be written by the www user
+RUN chown -R www:www /var/www/backend
+
+# Switch to the non-root user
 USER www
-RUN composer install
+
+# Copy files after ensuring permissions are correct
+COPY --chown=www:www . .
 # RUN php artisan storage:link
 
 # Build the frontend assets
