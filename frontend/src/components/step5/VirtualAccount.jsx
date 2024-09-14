@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function VirtualAccount() {
     const va = Math.floor(Math.random() * 999999999999) + 100000000000;
     const [completed, setCompleted] = useState(false);
@@ -15,7 +17,7 @@ export default function VirtualAccount() {
             referensi_pembayaran: "VA-" + va.toString().slice(-4),
         };
         try {
-            const res = await axios.put("http://127.0.0.1:8000/api/pemesanan/pay/" + id, data);
+            const res = await axios.put(apiUrl + "/pemesanan/pay/" + id, data);
             if (res.data.status === "404") {
                 alert("Pemesanan tidak ditemukan!");
             } else if (res.data.status === "400") {

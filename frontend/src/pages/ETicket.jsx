@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import { format, parseISO } from "date-fns";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function ETicket() {
     const { id } = useParams();
     const [data, setData] = useState({});
@@ -15,7 +17,7 @@ export default function ETicket() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/pemesanan/getDetail/" + id);
+                const res = await axios.get(apiUrl + "/pemesanan/getDetail/" + id);
                 if (res.data.status === "404") {
                     setError("Pemesanan tidak ditemukan!");
                 } else if (res.data.status === "200") {
@@ -49,7 +51,6 @@ export default function ETicket() {
             </>
         );
     }
-    console.log(data);
     return (
         <div className="container bg-white">
             <HeaderBack />
@@ -76,7 +77,7 @@ export default function ETicket() {
                         <div className="col-4">
                             <div className="mb-3">
                                 <img
-                                    src={`http://127.0.0.1:8000/images/maskapai/${data.penerbangan.maskapai
+                                    src={`${apiUrl}/images/maskapai/${data.penerbangan.maskapai
                                         .toLowerCase()
                                         .replace(/ /g, "_")}.png`}
                                     height="64px"

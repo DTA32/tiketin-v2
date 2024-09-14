@@ -11,6 +11,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function SearchBox() {
     const [dari, setDari] = useState("");
     const [ke, setKe] = useState("");
@@ -24,7 +26,7 @@ export default function SearchBox() {
     useEffect(() => {
         const fetchKota = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/bandara/getKota");
+                const res = await axios.get(apiUrl + "/bandara/getKota");
                 setTowns(res.data);
             } catch (error) {
                 console.log(error);
@@ -52,7 +54,7 @@ export default function SearchBox() {
         }
         try {
             setLoading(true);
-            const res = await axios.post("http://127.0.0.1:8000/api/penerbangan/search", data);
+            const res = await axios.post(apiUrl + "/penerbangan/search", data);
             if (res.data.status === "404") {
                 setError("Penerbangan tidak ditemukan");
             } else if (res.data.status === "400") {
@@ -81,7 +83,6 @@ export default function SearchBox() {
                                         className="input-text select2 w-100"
                                         autoComplete="off"
                                         required
-                                        value={dari}
                                         onChange={(e) => setDari(e.target.value)}
                                     >
                                         <option selected disabled></option>
@@ -103,7 +104,6 @@ export default function SearchBox() {
                                         className="input-text select2 w-100"
                                         autoComplete="off"
                                         required
-                                        value={ke}
                                         onChange={(e) => setKe(e.target.value)}
                                     >
                                         <option selected disabled></option>

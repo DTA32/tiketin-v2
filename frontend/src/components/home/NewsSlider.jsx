@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function NewsSlider() {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/news/highlight");
+                const res = await axios.get(apiUrl + "/news/highlight");
                 setNews(res.data);
             } catch (error) {
                 console.log(error);
@@ -53,7 +55,7 @@ export default function NewsSlider() {
                         <Link className="text-decoration-none" to={`/news/${item.id}`}>
                             <div className="card" style={{ width: "140px", whiteSpace: "normal" }}>
                                 <img
-                                    src={`http://127.0.0.1:8000/images/news/${item.id}.jpg`}
+                                    src={`${apiUrl}/images/news/${item.id}.jpg`}
                                     className="card-img-top"
                                     style={{ height: "100px" }}
                                 />

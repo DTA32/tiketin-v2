@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Step5() {
     const { id } = useParams();
     const [status, setStatus] = useState(0);
@@ -11,7 +13,7 @@ export default function Step5() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/pemesanan/getDetail/" + id);
+                const res = await axios.get(apiUrl + "/pemesanan/getDetail/" + id);
                 if (res.data.status === "404") {
                     setStatus(404);
                 } else if (res.data.data.metode_pembayaran != 0) {
@@ -29,7 +31,7 @@ export default function Step5() {
     }, [id]);
     return (
         <div>
-            <OrderCard id={id} />
+            <OrderCard id={parseInt(id)} />
             {loading && (
                 <div className="fs-4 text-center mt-1">
                     <p>Loading...</p>

@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Pemesanan() {
     const [pemesanan, setPemesanan] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/pemesanan/getAll")
+            .get(apiUrl + "/pemesanan/getAll")
             .then((response) => {
                 setPemesanan(response.data.data);
             })

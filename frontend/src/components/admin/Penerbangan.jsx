@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Penerbangan() {
     const [penerbangan, setPenerbangan] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/admin/penerbangan/getAll")
+            .get(apiUrl + "/admin/penerbangan/getAll")
             .then((response) => {
                 setPenerbangan(response.data);
             })
@@ -19,12 +21,12 @@ export default function Penerbangan() {
     const handleDelete = (id) => (e) => {
         e.preventDefault();
         axios
-            .delete(`http://localhost:8000/api/admin/penerbangan/delete/${id}`)
+            .delete(`${apiUrl}/admin/penerbangan/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 // Fetch data again after deletion
                 axios
-                    .get("http://localhost:8000/api/admin/penerbangan/getAll")
+                    .get(apiUrl + "/admin/penerbangan/getAll")
                     .then((response) => {
                         setPenerbangan(response.data);
                     })

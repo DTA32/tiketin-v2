@@ -6,11 +6,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function News() {
     const [news, setNews] = useState([]);
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/news/getAll")
+            .get(apiUrl + "/news/getAll")
             .then((res) => {
                 setNews(res.data);
             })
@@ -33,11 +35,7 @@ export default function News() {
                     {news.map((news, i) => (
                         <Link key={i} className="text-decoration-none" to={`/news/${news.id}`}>
                             <div className="card" style={{ width: 160 }}>
-                                <img
-                                    src={`http://127.0.0.1:8000/images/news/${news.id}.jpg `}
-                                    className="card-img-top"
-                                    alt=""
-                                />
+                                <img src={`${apiUrl}/images/news/${news.id}.jpg `} className="card-img-top" alt="" />
                                 <div className="card-body p-2">
                                     <p className="card-title fw-bold" style={{ fontSize: 12 }}>
                                         {news.title}

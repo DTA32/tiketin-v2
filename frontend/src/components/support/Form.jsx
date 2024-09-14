@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Form() {
     const [id, setId] = useState(0);
     const [subject, setSubject] = useState("");
@@ -25,8 +27,7 @@ export default function Form() {
             message: message,
         };
         try {
-            const res = await axios.post("http://127.0.0.1:8000/api/support/create", data);
-            console.log(res);
+            const res = await axios.post(apiUrl + "/support/create", data);
             if (res.data.status === 200) {
                 navigate("success");
             } else {

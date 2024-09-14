@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function HistoryDetail() {
     const { id } = useParams();
     const [data, setData] = useState({});
@@ -19,7 +21,7 @@ export default function HistoryDetail() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/pemesanan/getDetail/" + id);
+                const res = await axios.get(apiUrl + "/pemesanan/getDetail/" + id);
                 if (res.data.status === "404") {
                     setError("Pemesanan tidak ditemukan!");
                 } else if (res.data.status === "200") {

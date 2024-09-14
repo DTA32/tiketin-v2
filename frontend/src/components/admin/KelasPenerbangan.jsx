@@ -3,13 +3,15 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import rupiah from "../../utils/converter";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function KelasPenerbangan() {
     const { id } = useParams();
     const [kelasPenerbangan, setKelasPenerbangan] = useState([]);
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/api/admin/kelasPenerbangan/getByPen/${id}`)
+            .get(`${apiUrl}/admin/kelasPenerbangan/getByPen/${id}`)
             .then((response) => {
                 setKelasPenerbangan(response.data);
             })

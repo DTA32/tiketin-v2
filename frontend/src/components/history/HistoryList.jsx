@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import HistoryCard from "./HistoryCard";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function HistoryList() {
     const [pemesanan, setPemesanan] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/pemesanan/getAll");
+                const res = await axios.get(apiUrl + "/pemesanan/getAll");
                 setPemesanan(res.data.data);
             } catch (error) {
                 console.log(error);
