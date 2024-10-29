@@ -18,7 +18,17 @@ Server will be available at [localhost:8000](localhost:8000)
 
 ### Docker setup
 
-1. `docker compose build`
+> Most difficult docker image to create goes to Laravel
+
+For quick preview, image is available on docker hub and can be pulled by `docker pull dta32/tiketin-v2-be:latest` then step 2, but it's based on main branch, so if there's code changes can do step 1 first
+
+1. `docker build -t dta32/tiketin-v2-be .`
+1. `cp .env.example .env` (then edit accordingly)
+1. `docker run -d -p {externalPort}:8080 --env-file .env dta32/tiketin-v2-be:latest`
+
+For more simple deploy on each side can also use docker compose, it will autorun frontend, backend, and database, but please build each sides image first
+
+1. `cp .env.example .env` (then edit accordingly)
 1. `docker compose up -d`
 
 ---

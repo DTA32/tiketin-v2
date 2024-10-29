@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tiketin-v2-db
+  labels:
+    app: tiketin-v2-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiketin-v2-db
+  template:
+    metadata:
+      labels:
+        app: tiketin-v2-db
+    spec:
+      containers:
+        - name: tiketin-v2-db
+          image: mysql:8.0.39
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - secretRef:
+                name: tiketin-v2-db-secret
+          volumeMounts:
+            - name: tiketin-v2-db-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: tiketin-v2-db-storage
+          persistentVolumeClaim:
+            claimName: tiketin-v2-db-pvc

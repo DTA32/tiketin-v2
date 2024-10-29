@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tiketin-v2-be
+  labels:
+    app: tiketin-v2-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiketin-v2-be
+  template:
+    metadata:
+      labels:
+        app: tiketin-v2-be
+    spec:
+      containers:
+        - name: tiketin-v2-be
+          image: dta32/tiketin-v2-be:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: tiketin-v2-be-config
+            - secretRef:
+                name: tiketin-v2-be-secret

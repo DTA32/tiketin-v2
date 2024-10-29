@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: tiketin-v2-db-pv
+spec:
+    capacity:
+        storage: 5Gi
+    accessModes:
+        - ReadWriteOnce
+    storageClassName: manual
+    hostPath:
+        path: "/mnt/data/tiketin-v2-db"

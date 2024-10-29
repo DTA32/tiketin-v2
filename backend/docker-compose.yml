@@ -1,20 +1,16 @@
 services:
-    tiketin-be-core:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        container_name: tiketin-be-core
-        restart: unless-stopped
-        working_dir: /var/www/html
-        volumes:
-            - ./:/var/www/html
+    tiketin-v2-be:
+        image: dta32/tiketin-v2-be
+        container_name: tiketin-v2-be
+        env_file: .env
+        ports:
+            - "7004:80"
         networks:
             - tiketin-net
 
-    tiketin-be-db:
+    tiketin-v2-db:
         image: mysql:8.0.39
-        container_name: tiketin-be-db
-        restart: unless-stopped
+        container_name: tiketin-v2-db
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: tiketin
@@ -25,17 +21,11 @@ services:
         networks:
             - tiketin-net
 
-    tiketin-be-webserver:
-        image: nginx:latest
-        container_name: tiketin-be-webserver
-        restart: unless-stopped
+    tiketin-v2-fe:
+        image: dta32/tiketin-v2-fe
+        container_name: tiketin-v2-fe
         ports:
-            - "7004:80"
-        volumes:
-            - ./nginx:/etc/nginx/conf.d
-            - ./:/var/www/html
-        networks:
-            - tiketin-net
+            - "7003:80"
 
 networks:
     tiketin-net:
