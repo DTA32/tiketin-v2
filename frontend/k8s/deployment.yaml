@@ -16,7 +16,7 @@ spec:
         spec:
             containers:
                 - name: tiketin-v2-fe
-                  image: dta32/tiketin-v2-fe:latest
+                  image: replacedbycicd
                   imagePullPolicy: IfNotPresent
                   ports:
                       - containerPort: 80
