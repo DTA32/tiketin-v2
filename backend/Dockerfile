@@ -26,7 +26,7 @@ RUN chown www-data:www-data /app
 COPY --chown=www-data:www-data . .
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 USER www-data
-RUN composer install --no-dev --prefer-dist
+RUN composer install
 
 # [APP STAGE]
 FROM base

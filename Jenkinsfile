@@ -98,6 +98,8 @@ pipeline {
                     sh """
                     sed -i 's|replacedbycicd|${REGISTRY}/${REPO_BE}:${commitId}|' backend/k8s/deployment.yaml
                     kubectl apply -f backend/k8s/deployment.yaml --kubeconfig=${KUBE_CREDS}
+                    sed -i 's|replacedbycicd|${REGISTRY}/${REPO_BE}:${commitId}|' backend/k8s/cronjob.yaml
+                    kubectl apply -f backend/k8s/cronjob.yaml --kubeconfig=${KUBE_CREDS}
                     """
                 }
             }

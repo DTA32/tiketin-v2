@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-cleanup-tiketin
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: daily-cleanup-tiketin
+              image: replacedbycicd
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -c
+                - cd /app && php artisan migrate:fresh --force && php artisan db:seed --force && php artisan cache:clear && php artisan optimize && php artisan view:cache
+              envFrom:
+                - configMapRef:
+                    name: tiketin-v2-be-config
+                - secretRef:
+                    name: tiketin-v2-be-secret
+          restartPolicy: OnFailure
